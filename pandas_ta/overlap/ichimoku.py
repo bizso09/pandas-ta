@@ -4,7 +4,7 @@ from .midprice import midprice
 from pandas_ta.utils import get_offset, verify_series
 
 
-def ichimoku(high, low, close, tenkan=None, kijun=None, senkou=None, offset=None, include_chikou=True, **kwargs):
+def ichimoku(high, low, close, tenkan=None, kijun=None, senkou=None, include_chikou=True, offset=None, **kwargs):
     """Indicator: Ichimoku Kinkō Hyō (Ichimoku)"""
     tenkan = int(tenkan) if tenkan and tenkan > 0 else 9
     kijun = int(kijun) if kijun and kijun > 0 else 26
@@ -125,8 +125,8 @@ Args:
     tenkan (int): Tenkan period. Default: 9
     kijun (int): Kijun period. Default: 26
     senkou (int): Senkou period. Default: 52
-    offset (int): How many periods to offset the result. Default: 0
     include_chikou (bool): Whether to include chikou component. Default: True
+    offset (int): How many periods to offset the result. Default: 0
 
 Kwargs:
     fillna (value, optional): pd.DataFrame.fillna(value)
