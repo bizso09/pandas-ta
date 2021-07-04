@@ -124,6 +124,7 @@ Args:
     kijun (int): Kijun period. Default: 26
     senkou (int): Senkou period. Default: 52
     offset (int): How many periods to offset the result. Default: 0
+    include_chikou (bool): Whether to include chikou component. Default: True
 
 Kwargs:
     fillna (value, optional): pd.DataFrame.fillna(value)
