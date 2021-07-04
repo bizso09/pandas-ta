@@ -14,6 +14,8 @@ def ichimoku(high, low, close, tenkan=None, kijun=None, senkou=None, offset=None
     low = verify_series(low, _length)
     close = verify_series(close, _length)
     offset = get_offset(offset)
+    if not kwargs.get("lookahead", True):
+        include_chikou = False
 
     if high is None or low is None or close is None: return None, None
 
