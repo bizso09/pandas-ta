@@ -4,7 +4,7 @@ from .midprice import midprice
 from pandas_ta.utils import get_offset, verify_series
 
 
-def ichimoku(high, low, close, tenkan=None, kijun=None, senkou=None, offset=None, **kwargs):
+def ichimoku(high, low, close, tenkan=None, kijun=None, senkou=None, offset=None, include_chikou=True, **kwargs):
     """Indicator: Ichimoku Kinkō Hyō (Ichimoku)"""
     tenkan = int(tenkan) if tenkan and tenkan > 0 else 9
     kijun = int(kijun) if kijun and kijun > 0 else 26
@@ -65,8 +65,10 @@ def ichimoku(high, low, close, tenkan=None, kijun=None, senkou=None, offset=None
         span_b.name: span_b,
         tenkan_sen.name: tenkan_sen,
         kijun_sen.name: kijun_sen,
-        chikou_span.name: chikou_span,
     }
+    if include_chikou:
+        data[chikou_span.name] = chikou_span
+
     ichimokudf = DataFrame(data)
     ichimokudf.name = f"ICHIMOKU_{tenkan}_{kijun}_{senkou}"
     ichimokudf.category = "overlap"
